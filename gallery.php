@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>National Shea Products Association of Nigeria Official website</title>
+  <title>National Shea Products Association of Nigeria Official website Gallery</title>
   <!-- google fonts -->
   <link href="//fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
   <!-- google fonts -->
