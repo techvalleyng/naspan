@@ -11,6 +11,6 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
-            server: ftp.naspan.com.ng:21
+            server: 162.241.226.109
             username: ${{secrets.FTP_USERNAME}}@{{secrets.FTP_SERVER}}
             password: ${{secrets.FTP_PASSWORD}}
