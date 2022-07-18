@@ -1,0 +1,12 @@
+beta/
+learn/
+learning/
+
+
+node_modules/
+.DS_Store
+.idea/
+*.iml
+*.pem
+*.zip
+*.ini
