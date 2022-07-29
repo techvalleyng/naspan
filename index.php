@@ -137,27 +137,21 @@ include('includes/header.php');
             <div class="sidebar-title">
               <h4>Latest Updates</h4>
             </div>
-
-            <article class="post">
-              <figure class="post-thumb"><img src="assets/images/naspan-caption.jpg" alt=""></figure>
-              <div class="text"><a href="blog-press-statement-on-nifor-partnership">NASPAN Collaborates with NIFOR</a>
-              </div>
-              <div class="post-info">June. 24, 2022</div>
-            </article>
-            <article class="post">
-              <figure class="post-thumb"><img src="assets/images//NASPAN-Shea-belt-nigeria.png" alt=""></figure>
-              <div class="text"><a href="blog-single">Being The Communique Issued at the End
-                </a></div>
-              <div class="post-info">Sept. 1, 2021</div>
-            </article>
-
-            <article class="post">
-              <figure class="post-thumb"><img src="assets/images/NASPAN-president-and-aisha.jpeg" alt=""></figure>
-              <div class="text"><a href="blog-single">NASPAN President Recieves Aisha Babangida</a>
-              </div>
-              <div class="post-info">Aug. 11, 2021</div>
-            </article>
-
+            <?php 
+                  $query=mysqli_query($con,"select tblposts.id as pid,tblposts.PostTitle as posttitle,tblposts.PostImage,tblposts.Category,tblposts.PostDetails, tblcategory.CategoryName as category,tblcategory.id as cid,tblsubcategory.Subcategory as subcategory,tblposts.PostDetails as postdetails,tblposts.PostingDate as postingdate,tblposts.PostUrl as url from tblposts left join tblcategory on tblcategory.id=tblposts.CategoryId left join  tblsubcategory on  tblsubcategory.SubCategoryId=tblposts.SubCategoryId where tblposts.Is_Active=1 order by tblposts.id desc  LIMIT 3");
+                  while ($row=mysqli_fetch_array($query)) {
+                ?>
+                <article class="post">
+                  <figure class="post-thumb"><img src="admin/postimages/<?php echo htmlentities($row['PostImage']);?>"
+                        alt="<?php echo htmlentities($row['posttitle']);?>"></figure>
+                  <div class="text"><a href="blog-single?nid=<?php echo htmlentities($row['pid'])?>">
+                      <?php echo htmlentities(mb_strimwidth($row['posttitle'], 0, 50, "..."));?></a>
+                  </div>
+                  <div class="post-info"><?php echo htmlentities($row['postingdate']);?></div>
+                </article>
+                <hr>
+                <?php } ?>
+                
           </div>
         </div>
       </div>
