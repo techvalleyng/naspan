@@ -23,10 +23,6 @@
             <img src="assets/images/naspan_logo.jpg" style="height: 40px;">
             NAS<span>PAN</span>
           </a></h1>
-        <!-- if logo is image enable this   
-      <a class="navbar-brand" href="#index">
-          <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
-      </a> -->
         <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
           data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
           aria-label="Toggle navigation">
@@ -240,7 +236,7 @@
                         </button>
                         <!-- Modal -->
                         <div class="modal fade" id="executivesListModal" tabindex="-1" role="dialog" aria-labelledby="executivesListModal" aria-hidden="true">
-                          <div class="modal-dialog" role="document">
+                          <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">NASPAN Executives</h5>
@@ -249,7 +245,10 @@
                                 </button>
                               </div>
                               <div class="modal-body">
-                                <table class="table">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                      <div class="col-md-8">
+                                          <table class="table">
                                     <thead>
                                       <tr>
                                         <th>Fullname</th>
@@ -258,7 +257,7 @@
                                     </thead>
                                     <tbody>
                                       <tr>
-                                        <td>Mohammed Ahmed Kontagora</td>
+                                        <td>Alh. Mohammed Ahmed Kontagora</td>
                                         <td>President</td>
                                       </tr>
                                       <tr>
@@ -299,6 +298,33 @@
                                       </tr>
                                     </tbody>
                                   </table>
+                                      </div>
+                                      <div class="col-md-4">
+                                          <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th>Exofficio</th>
+                                       
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>Ibrahim Bagudu</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Dauda Muhammed Lawan</td>
+                                      </tr>
+                                       <tr>
+                                        <td>Dr Ibrahim Muhammed</td>
+                                      </tr>
+                                       <tr>
+                                        <td>Saratu Asuku</td>
+                                      </tr>
+                                      </tbody>
+                                      </table>
+                                      </div>
+                                    </div>
+                                </div>
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

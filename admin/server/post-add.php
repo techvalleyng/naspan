@@ -10,9 +10,12 @@ else{
     // For adding post  
     if(isset($_POST['add']))
     {
-        $posttitle=$_POST['posttitle'];
-        $category=$_POST['category'];
-        $postdetails=$_POST['postdescription'];
+        // Escape special characters, if any
+$firstname = mysqli_real_escape_string($con, $_POST['firstname']);
+
+        $posttitle= mysqli_real_escape_string($con, $_POST['posttitle']);
+        $category= mysqli_real_escape_string($con, $_POST['category']);
+        $postdetails= mysqli_real_escape_string($con, $_POST['postdescription']);
         $arr = explode(" ",$posttitle);
         $url=implode("-",$arr);
         $imgfile=$_FILES["postimage"]["name"];
@@ -40,7 +43,8 @@ else{
                 header('location:../page-post-list');
                 }
             else{
-                $error="Something went wrong . Please try again.";    
+                $error="Something went wrong . Please try again.";
+                echo $error." ".mysqli_error($con);
             } 
         
         }

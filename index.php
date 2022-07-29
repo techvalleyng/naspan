@@ -4,6 +4,7 @@ include('includes/config.php');
 include('includes/header.php');
 ?>
 <body>
+    
   <!--header-->
   <?php
   include('includes/nav.php');
@@ -399,3 +400,25 @@ include('includes/header.php');
   <?php
   include('includes/scripts.php');
   ?>
+  
+<script>
+    	$(document).ready(function(){
+    		$("#myModal").modal('show');
+    	});
+</script>
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">NASPAN Annual Shea Conference</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <<iframe width="300" height="154" style="display: block; margin: 0 auto;" src="https://w2.countingdownto.com/4271486" frameborder="0"></iframe>
+                <p>For More Information <a href="blog-single?nid=22" class="text-primary font-weight-bold">click here</a></p>
+				<img src="assets/images/naspan_annual_shea_conference_2022.jpg" class="img-fluid">
+				
+            </div>
+        </div>
+    </div>
+</div>

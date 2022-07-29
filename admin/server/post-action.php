@@ -20,16 +20,21 @@ if($_GET['action']='del')
     } 
 }
 
-if($_GET['action']='edit')
-{
-    header('location:../page-post-edit');
-}
+// if($_GET['action']='edit')
+// {
+//     header('location:../page-post-edit');
+// }
 
 if(isset($_POST['edit']))
 {
     $posttitle=$_POST['posttitle'];
     $category=$_POST['category'];
     $postdetails=$_POST['postdescription'];
+    echo $posttitle= mysqli_real_escape_string($con, $_POST['posttitle']);
+    echo $category= mysqli_real_escape_string($con, $_POST['category']);
+    echo $postdetails= "Here: ".mysqli_real_escape_string($con, $_POST['postdescription']);
+    echo "before exit";
+    exit;
     $arr = explode(" ",$posttitle);
     $url=implode("-",$arr);
     $status=1;

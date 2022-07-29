@@ -53,10 +53,6 @@ header('location:index.php');
                                 <label class="control-label">Post Title</label>
                                 <input class="form-control" type="text" placeholder="Enter post Title" name="posttitle">
                             </div>
-                            <!-- <div class="form-group">
-                                <label class="control-label">Post Descriptioin</label>
-                                <textarea class="form-control" rows="4" placeholder="Enter Meta Description"></textarea>
-                            </div> -->
                             <div class="form-group">
                                 <label class="control-label">Post Picture/Thumbnail</label>
                                 <input class="form-control" type="file" name="postimage">
@@ -106,7 +102,6 @@ header('location:index.php');
         });
     $('#postAddForm').submit(function() {
         $('#editor').val(quill.root.innerHTML);
-        alert($('#editor').val());
     });
 
     </script>

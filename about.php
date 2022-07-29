@@ -71,19 +71,24 @@ include('includes/header.php');
     <div class="container py-lg-5 py-md-4">
       <div class="w3-stats-inner-info">
         <div class="row">
-          <div class="col-lg-4 col-6 stats_info counter_grid text-left">
+          <div class="col-lg-3 col-6 stats_info counter_grid text-center">
             <span class="fa fa-smile-o"></span>
             <p class="counter">1730</p>
             <h4>Members</h4>
           </div>
-          <div class="col-lg-4 col-6 stats_info counter_grid1 text-left">
+          <div class="col-lg-3 col-6 stats_info counter_grid text-center">
+            <span class="fa fa-building"></span>
+            <p class="counter">86</p>
+            <h4>Companies</h4>
+          </div>
+          <div class="col-lg-3 col-6 stats_info counter_grid1 text-center">
             <span class="fa fa-users"></span>
-            <p class="counter">730</p>
+            <p class="counter">0</p>
             <h4>Cooperatives</h4>
           </div>
-          <div class="col-lg-4 col-6 stats_info counter_grid mt-lg-0 mt-5 text-left">
+          <div class="col-lg-3 col-6 stats_info counter_grid mt-lg-0 mt-5 text- center">
             <span class="fa fa-database"></span>
-            <p class="counter">30</p>
+            <p class="counter">24</p>
             <h4>State Chapters</h4>
           </div>
         </div>

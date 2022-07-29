@@ -32,6 +32,7 @@
                 <a class="dropdown-item" href="industry_overview">Industry Overview</a>
                 <a class="dropdown-item" href="executives">Executive Members</a>
                 <a class="dropdown-item" href="strategic_focus">Strategic Focus</a>
+                <a class="dropdown-item" href="members_list">Members List</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -84,7 +85,7 @@
           <a href="become" class="btn btn-style btn-secondary ml-lg-3">Become a Member</a>
         </div>
         <div class="d-lg-block d-none">
-          <a href="#" class="btn btn-style btn-secondary ml-lg-3">Donate</a>
+          <a href="conference.php" class="btn btn-style btn-secondary ml-lg-3">Conference 2022</a>
         </div>
         <!-- toggle switch for light and dark theme -->
         <div class="mobile-position">
