@@ -32,8 +32,8 @@ include('includes/header.php');
                   <thead>
                     <tr>
                       <th>Name</th>
-                      <th>State</th>
-                      <th>Office</th>
+                      <th>Contact Desk</th>
+                      <th>Email</th>
                       <th>Membership Type</th>
                     </tr>
                   </thead>
@@ -41,7 +41,25 @@ include('includes/header.php');
                     <tr>
                       <td>NASPAN</td>
                       <td>Abuja</td>
-                      <td>No 3 Femi Okunnu Street, Abuja</td>
+                      <td> <a href="mailto:info@naspan.com.ng">info@naspan.com.ng</a></td>
+                      <td>Corporate</td>
+                    </tr>
+                    <tr>
+                      <td>JE OILS</td>
+                      <td>MR. GBENGA IDOWU</td>
+                      <td> <a href="mailto:gbenga.idowu@jeoils.com">info@naspan.com.ng</a></td>
+                      <td>Corporate</td>
+                    </tr>
+                    <tr>
+                      <td>NATURALLY TRIBAL</td>
+                      <td>SHALOM LLYOD </td>
+                      <td> <a href="mailto:shalom@naturallytribalgroup">shalom@naturallytribalgroup</a></td>
+                      <td>Corporate</td>
+                    </tr>
+                    <tr>
+                      <td>LADGROUP </td>
+                      <td>Mr. ROBERT       OGIRRI       (MD) </td>
+                      <td> <a href="mailto:r.ogirri@ladgroup.org">r.ogirri@ladgroup.org</a></td>
                       <td>Corporate</td>
                     </tr>
                   </tbody>
