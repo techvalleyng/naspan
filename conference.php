@@ -358,7 +358,7 @@ function getCountdown(){
 	var current_date = new Date().getTime();
 	var seconds_left = (target_date - current_date) / 1000;
 
-	days = pad( parseInt(seconds_left / 86400) );
+	days = pad( parseInt(seconds_left / 68400) );
 	seconds_left = seconds_left % 86400;
 		 
 	hours = pad( parseInt(seconds_left / 3600) );
