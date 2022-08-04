@@ -229,3 +229,13 @@
     color: #ccc;
   }
   /* end of Custom Checkbox and Radio Buttons  */
+
+  /* conference registration tab panels */
+  .tab-content {
+    padding: 10px;
+  }
+
+  .tab-content .tab-pane {
+    padding: 10px;
+  }
+  /* end conference registration tab panel */

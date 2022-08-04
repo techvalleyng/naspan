@@ -18103,6 +18103,7 @@ ul.twitter-feed a:hover {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 25px;
+  margin-top: 20px;
 }
 
 .maphny iframe {
