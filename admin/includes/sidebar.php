@@ -13,6 +13,7 @@
             <li><a class="treeview-item" href="page-member-add"><i class="icon fa fa-circle-o"></i> Add Members</a></li>
             <li><a class="treeview-item" href="page-member-list" target="" rel="noopener"><i class="icon fa fa-circle-o"></i> Member List</a></li>
             <li><a class="treeview-item" href="page-member-type" target="" rel="noopener"><i class="icon fa fa-circle-o"></i> Membership Type</a></li>
+            <li><a class="treeview-item" href="page-member-conference-list" target="" rel="noopener"><i class="icon fa fa-circle-o"></i> Conference Registration</a></li>
             <li><a class="treeview-item" href="page-member-payment" target="" rel="noopener"><i class="icon fa fa-circle-o"></i> Membership Payment</a></li>
           </ul>
         </li>
