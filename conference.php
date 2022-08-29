@@ -280,10 +280,10 @@ h3{
       <div class="row">
         <div class="col-lg-12 content-6-left">
            <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-           <h3 class="text-center">To Register for the conference, please click on the link below:</h3>
+           <!-- <h3 class="text-center">To Register for the conference, please click on the link below:</h3>
            <p class="text-center">
            <a class="btn btn-style btn-secondary ml-lg-3" href="conference_registration">REGISTER</a>
-           </p>
+           </p> -->
     <h1>Timeline of the Conference</h1>
     <div class="timeline">
         <ul>

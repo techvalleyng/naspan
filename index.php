@@ -401,7 +401,7 @@ include('includes/header.php');
   include('includes/scripts.php');
   ?>
   
-<script>
+<!-- <script>
     	$(document).ready(function(){
     		$("#myModal").modal('show');
     	});
@@ -421,4 +421,4 @@ include('includes/header.php');
             </div>
         </div>
     </div>
-</div>
+</div> -->
