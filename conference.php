@@ -261,7 +261,7 @@ h3{
           <li><a href="#url">Home</a></li>
           <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Conference </li>
         </ul>
-        <div id="countdown">
+        <!-- <div id="countdown">
           <div id='tiles'></div>
           <div class="labels">
             <li>Days</li>
@@ -269,7 +269,7 @@ h3{
             <li>Mins</li>
             <li>Secs</li>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
