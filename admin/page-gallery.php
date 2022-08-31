@@ -103,20 +103,24 @@ if(isset($_POST['galleryTitle'])){
       } else {
           if (move_uploaded_file($_FILES["galleryImages"]["tmp_name"][$i], "../".$target_file)) {
             $status =  "The file ". htmlspecialchars( basename( $_FILES["galleryImages"]["name"][$i])). " has been uploaded.";
+            if (!mysqli_query($con,"INSERT INTO tblgallery(title, img_caption, post_id, gallery_id, img_src, created_at, `user_id`)
+            VALUES ('$title', '$caption', $post, $galleryid, '$target_file', '$created_at', '$userid')")) {
+              // echo("Error description: " . mysqli_error($con));
+              $addStatus = "Error";
+            }else{
+              $addStatus = "Gallery Added";
+            }
           } else {
             echo "Sorry, there was an error uploading your file.";
           }
-      }
-
-      if (!mysqli_query($con,"INSERT INTO tblgallery(title, img_caption, post_id, gallery_id, img_src, created_at, `user_id`)
-      VALUES ('$title', '$caption', $post, $galleryid, '$target_file', '$created_at', '$userid')")) {
-        echo("Error description: " . mysqli_error($con));
-      }else{
-        echo "Gallery Added";
-      }
+      }    
       
   }
    
+}
+
+if(isset($addStatus)){
+  echo $addStatus;
 }
 ?>
             <form action="" method="post" enctype="multipart/form-data">
