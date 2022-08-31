@@ -20,9 +20,8 @@
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Post</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="page-post-add"><i class="icon fa fa-circle-o"></i> Add Post</a></li>
-            <!-- <li><a class="treeview-item" href="" target="" rel="noopener"><i class="icon fa fa-circle-o"></i> Submitted Articles</a></li> -->
             <li><a class="treeview-item" href="page-post-list" target="" rel="noopener"><i class="icon fa fa-circle-o"></i> Manage Post</a></li>
-            
+            <li><a class="treeview-item" href="page-gallery" target="" rel="noopener"><i class="icon fa fa-circle-o"></i> Gallery Management</a></li>
           </ul>
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Comments</span><i class="treeview-indicator fa fa-angle-right"></i></a>

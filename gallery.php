@@ -1,19 +1,8 @@
-<!doctype html>
-<html lang="zxx">
-
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>National Shea Products Association of Nigeria Official website</title>
-    <!-- google fonts -->
-    <link href="//fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
-    <!-- google fonts -->
-    <!-- Template CSS -->
-    <link rel="stylesheet" href="assets/css/style-liberty.css">
-    <!-- Template CSS -->
-</head>
-
+<?php 
+session_start();
+include('includes/config.php');
+include('includes/header.php');
+?>
 <body>
     <!--header-->
     <header id="site-header" class="fixed-top">

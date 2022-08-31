@@ -49,59 +49,8 @@ if(isset($_POST['edit']))
       </ul>
     </div>
     <div class="row">
-      <div class="col-md-6">
-        <div class="tile">
-          <h3 class="tile-title">Recent Membership Type</h3>
-          <table class="table table-hover table-striped">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Member Type</th>
-                <th>Fee (NGN)</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-                <?php
-                $query=mysqli_query($con,"select * from tblmembertype");
-                $rowcount=mysqli_num_rows($query);
-                if($rowcount==0)
-                    {
-                    ?>
-                <tr>
-                    <td colspan="7" align="center"><h3 style="color:red">No record found</h3></td>
-                <tr>
-                <?php 
-                } else {
-                    $count = 1;
-                    while($row=mysqli_fetch_array($query))
-                { 
-                ?>
-                <tr>
-                    <td><?php echo $count; ?></td>
-                    <td><?php echo $row['memberType'] ?></td>
-                    <td><?php echo $row['fee'] ?></td>
-                    <td>
-                      <a href="?mtid=<?php echo htmlentities($row['id']);?>&&action=edit" onclick="$('#edit-membertype').style.display='none'">
-                        <button type="button" class="btn btn-primary"> 
-                          <i class="fa fa-edit" aria-hidden="true"></i>
-                          Edit
-                        </button>
-                      </a>
-                      <a href="server/membertype-add.php?mtid=<?php echo htmlentities($row['id']);?>&&action=del" onclick="return confirm('Do you reaaly want to delete ?')" style="color:white;">
-                        <button type="button" class="btn btn-danger">
-                          <i class="fa fa-trash" aria-hidden="true"></i>
-                          Delete
-                        </button>
-                      </a>
-                    </td>
-                </tr>
-                <?php $count = $count + 1; }  }?>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="col-md-6">
+      
+      <div class="col-md-12">
         <div class="tile">
 
           <div class="tile-title-w-btn">
@@ -109,37 +58,138 @@ if(isset($_POST['edit']))
             <!-- <p><a class="btn btn-primary icon-btn" href=""><i class="fa fa-plus"></i> </a></p> -->
           </div>
           <div class="tile-body">
-            <form action="server/membertype-add" method="post">
+          <?php
+
+if(isset($_POST['galleryTitle'])){
+  $title = $_POST['galleryTitle'];
+  $caption = $_POST['galleryCaption'];
+  $galleryid = rand();
+  $post = $_POST['selectPost'];
+  $imgsrc = "";
+  $created_at = date('Y-m-d H:i:s');
+  $userid = $_SESSION['adminlogin'];
+  $uploadOk = 1;
+
+  $target_dir = "assets/images/gallery/";
+  
+  $countfiles = count($_FILES['galleryImages']['name']);
+  for($i=0;$i<$countfiles;$i++){
+      $target_file = $target_dir . basename($_FILES["galleryImages"]["name"][$i]);
+      $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+      
+      // Check file size
+      if ($_FILES["galleryImages"]["size"][$i] > 50000000) {
+        echo "Sorry, your file is too large.";
+        $uploadOk = 0;
+      }
+
+      // Allow certain file formats
+      if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+      && $imageFileType != "gif" ) {
+        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        $uploadOk = 0;
+      }
+
+      // Check if file already exists
+      if (file_exists("../".$target_file)) {
+        echo "Sorry, file already exists.";
+        $uploadOk = 0;
+      }
+      
+      // Check if $uploadOk is set to 0 by an error
+      if ($uploadOk == 0) {
+        echo "Sorry, your file was not uploaded.";
+        // if everything is ok, try to upload file
+      } else {
+          if (move_uploaded_file($_FILES["galleryImages"]["tmp_name"][$i], "../".$target_file)) {
+            $status =  "The file ". htmlspecialchars( basename( $_FILES["galleryImages"]["name"][$i])). " has been uploaded.";
+          } else {
+            echo "Sorry, there was an error uploading your file.";
+          }
+      }
+
+      if (!mysqli_query($con,"INSERT INTO tblgallery(title, img_caption, post_id, gallery_id, img_src, created_at, `user_id`)
+      VALUES ('$title', '$caption', $post, $galleryid, '$target_file', '$created_at', '$userid')")) {
+        echo("Error description: " . mysqli_error($con));
+      }else{
+        echo "Gallery Added";
+      }
+      
+  }
+   
+}
+?>
+            <form action="" method="post" enctype="multipart/form-data">
               <div class="form-group">
-                <label class="control-label">Membership Type</label>
+                <label class="control-label">Gallery Title</label>
                 <div class="form-group">
-                  <label class="sr-only" for="exampleInputAmount">Member type</label>
+                  <label class="sr-only" for="exampleInputAmount">Gallery Title</label>
                   <div class="input-group">
-                    <input class="form-control" id="exampleInputAmount" name="membertype" type="text" placeholder="Member Type">
+                    <input class="form-control" id="galleryTitle" name="galleryTitle" type="text" placeholder="Gallery Title">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="sr-only" for="exampleInputAmount">Fee (NGN)</label>
+                  <label for="selectPost">Select Post</label>
+                  <select class="form-control" id="selectPost" name="selectPost">
+                  <?php
+                    $query=mysqli_query($con,"select * from tblposts");
+                    $rowcount=mysqli_num_rows($query);
+                    if($rowcount==0){
+                  ?>
+                    <option value="0">Independent Gallery</option>
+                  <?php 
+                    } else {
+                    
+                      echo '<option value="0">Independent Gallery</option>';
+                      $count = 1;
+                      while($row=mysqli_fetch_array($query))
+                    { 
+                  ?>
+                    <option value="<?php echo $row['id'] ?>"><?php echo $row['PostTitle'] ?></option>
+                  <?php $count = $count + 1; }  }?>
+                  </select>
+                </div>
+                
+                <label class="control-label">Image Caption</label>
+                <div class="form-group">
+                  <label class="sr-only" for="exampleInputAmount">Image Caption</label>
                   <div class="input-group">
-                    <input class="form-control" id="exampleInputAmount" name="fee" type="number" placeholder="Membership Fee">
+                    <input class="form-control" id="galleryCaption" name="galleryCaption" type="text" placeholder="Image Caption">
+                  </div>
+                </div>
+                <label class="control-label">Gallery Images</label>
+                <div class="form-group">
+                  <label class="sr-only" for="galleryImages">Gallery Images</label>
+                  <div class="input-group">
+                    
+                    <div class="upload__box">
+                      <div class="upload__btn-box">
+                        <label class="upload__btn">
+                          <p>Upload images</p>
+                          <input name="galleryImages[]" id="galleryImages" type="file" multiple  data-max_length="20" class="upload__inputfile">
+                        </label>
+                      </div>
+                      <div class="upload__img-wrap"></div>
+                    </div>
                   </div>
                 </div>
                 <div class="form-group align-self-end">
-                  <button class="btn btn-primary" type="submit" name="add"><i class="fa fa-plus"></i>Add</button>
+                  <button class="btn btn-primary" type="submit" name="add"><i class="fa fa-plus"></i>Add Album</button>
                 </div>
               </div>
             </form>
+            
           </div>
         </div>
       </div>
-      <div class="col-md-6" id="edit-membertype">
+      <div class="col-md-12" id="edit-membertype">
         <div class="tile">
 
           <div class="tile-title-w-btn">
-            <h3 class="title">Update Membership Type</h3>
+            <h3 class="title">Gallery List</h3>
             <!-- <p><a class="btn btn-primary icon-btn" href=""><i class="fa fa-plus"></i> </a></p> -->
           </div>
-          <div class="tile-body">
+          <!-- <div class="tile-body">
             <?php
               $membertypeid=intval($_GET['mtid']);
               $query=mysqli_query($con,"select * from tblmembertype where id='$membertypeid'");
@@ -166,7 +216,7 @@ if(isset($_POST['edit']))
               </div>
             </form>
             <?php } ?>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="clearfix"></div>
@@ -177,4 +227,147 @@ if(isset($_POST['edit']))
   <?php
     include('includes/footer.php');
   ?>
+  <style>
+  .upload__box {
+        padding: 40px;
+        }
+        .upload__inputfile {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+        }
+        .upload__btn {
+        display: inline-block;
+        font-weight: 600;
+        color: #fff;
+        text-align: center;
+        min-width: 116px;
+        padding: 5px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: 2px solid;
+        background-color: #009688;
+        border-color: #009688;
+        border-radius: 10px;
+        line-height: 26px;
+        font-size: 14px;
+        }
+        .upload__btn:hover {
+        background-color: unset;
+        color: #009688;
+        transition: all 0.3s ease;
+        }
+        .upload__btn-box {
+        margin-bottom: 10px;
+        }
+        .upload__img-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -10px;
+        }
+        .upload__img-box {
+        width: 200px;
+        padding: 0 10px;
+        margin-bottom: 12px;
+        }
+        .upload__img-close {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        text-align: center;
+        line-height: 24px;
+        z-index: 1;
+        cursor: pointer;
+        }
+        .upload__img-close:after {
+        content: "✖";
+        font-size: 14px;
+        color: white;
+        }
+
+        .img-bg {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        position: relative;
+        padding-bottom: 100%;
+        }
+        </style>
+        <script>
+        jQuery(document).ready(function () {
+        ImgUpload();
+        });
+
+        function ImgUpload() {
+        var imgWrap = "";
+        var imgArray = [];
+
+        $(".upload__inputfile").each(function () {
+          $(this).on("change", function (e) {
+            imgWrap = $(this).closest(".upload__box").find(".upload__img-wrap");
+            var maxLength = $(this).attr("data-max_length");
+
+            var files = e.target.files;
+            var filesArr = Array.prototype.slice.call(files);
+            var iterator = 0;
+            filesArr.forEach(function (f, index) {
+              if (!f.type.match("image.*")) {
+                return;
+              }
+
+              if (imgArray.length > maxLength) {
+                return false;
+              } else {
+                var len = 0;
+                for (var i = 0; i < imgArray.length; i++) {
+                  if (imgArray[i] !== undefined) {
+                    len++;
+                  }
+                }
+                if (len > maxLength) {
+                  return false;
+                } else {
+                  imgArray.push(f);
+
+                  var reader = new FileReader();
+                  reader.onload = function (e) {
+                    var html =
+                      "<div class='upload__img-box'><div style='background-image: url(" +
+                      e.target.result +
+                      ")' data-number='" +
+                      $(".upload__img-close").length +
+                      "' data-file='" +
+                      f.name +
+                      "' class='img-bg'><div class='upload__img-close'></div></div></div>";
+                    imgWrap.append(html);
+                    iterator++;
+                  };
+                  reader.readAsDataURL(f);
+                }
+              }
+            });
+          });
+        });
+
+        $("body").on("click", ".upload__img-close", function (e) {
+          var file = $(this).parent().data("file");
+          for (var i = 0; i < imgArray.length; i++) {
+            if (imgArray[i].name === file) {
+              imgArray.splice(i, 1);
+              break;
+            }
+          }
+          $(this).parent().parent().remove();
+        });
+        }
+
+  </script>
+
   
